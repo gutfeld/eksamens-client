@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta charset="UTF-8">
+    <title>Daniel Gutfeld</title>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="container">
+
+            <nav class="navbar navbar-inverse">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="userHome.html">Home</a></li>
+                        <li><p class="navbar-text" id="currentUser"></p></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" id="deleteUserNavButton"><span class="glyphicon glyphicon-trash"></span> Delete User</a></li>
+                        <li><a href="index.html" id="logoutNavButton"><span class="glyphicon glyphicon glyphicon-chevron-right"></span> Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <hr>
+            <h1>User Homepage</h1>
+            <h4>Please pick a course to get to the quizzes:</h4>
+            <hr><hr><hr>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">Distribuerede Systemer</h4>
+                            <button class="btn-success btn-lg" style="width: 100px" id="homeDIS">Pick</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">IT-Forandringsledelse</h4>
+                            <button class="btn-success btn-lg" style="width: 100px" id="homeITF">Pick</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">Makroøkonomi</h4>
+                            <button class="btn-success btn-lg" style="width: 100px" id="homeMAKRO">Pick</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">Finansiering</h4>
+                            <button class="btn-success btn-lg" style="width: 100px" id="homeFIN">Pick</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr><hr>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">2017 © All rights reserved - Gutfeld Inc.</p>
+    </div>
+</footer>
+
+<script src="lib/js/jquery-3.2.1.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/userHome.js"></script>
+
+</body>
+</html>
