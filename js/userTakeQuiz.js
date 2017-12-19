@@ -1,24 +1,3 @@
-function getRadioVal(form, name) {
-
-    // Denne funktion er kopieret fra: http://www.dyn-web.com/tutorials/forms/radio/get-selected.php
-
-    var val;
-    // get list of radio buttons with specified name
-    radios = document.forms[form].elements[name];
-    var radiosObj = $(radios);
-
-//    alert(radiosObj.val());
-
-    // loop through list of radio buttons
-    for (var i=0; i<2; i++) {
-        if ( radiosObj[i].checked() ) { // radio checked?
-            val = radiosObj[i].val(); // if so, hold its value in val
-            break; // and break out of for loop
-        }
-    }
-    return val; // return value of checked radio or undefined if none checked
-}
-
 $(document).ready(() => {
 
     let firstName = SDK.Storage.load('firstName');
@@ -45,12 +24,10 @@ $(document).ready(() => {
 
     });
 
-    SDK.Question.findQuestions((err, Qdata) => {
+    SDK.Question.findQuestions((err, data) => {
 
-        var questions = $.parseJSON(Qdata);
-        let radio = 0;
+        var questions = $.parseJSON(data);
         questions.forEach((question) => {
-            radio++;
 
             $(".table").append(`<div id="${question.questionId}"><p><b>${question.questionTitle}</b></p></div>`);
 
@@ -59,7 +36,7 @@ $(document).ready(() => {
 
             choices.forEach((choice) => {
 
-                $("#"+question.questionId).append(`<p><form name="radio"+radio><input type="radio" name="question"+${question.questionId} value="${choice.answer}"> ${choice.choiceTitle} </form></p>  `)
+                $("#"+question.questionId).append(`<p><input type="radio" class="answer-radio" name="question"+${question.questionId} value="${choice.answer}"> ${choice.choiceTitle} </p>  `)
 
             })
             })
@@ -68,36 +45,27 @@ $(document).ready(() => {
 
     $("#submitAnswersButton").click(() => {
 
-        let counter = 0;
-        let radios = $("input[type='radio']");
-        var radiosObjects = $(radios.val());
-        radiosObjects.filter(":checked");
+        let totalQuestions = 0;
+        let correctAnswers = 0;
 
-        radiosObjects.forEach((radio) => {
-            if (radio == 2) {
-                counter++;
+
+        //Function to count number of questions answered
+        $(".answer-radio").each(function () {
+            if ($(this).is(":checked")) {
+                totalQuestions++;
+                //Function to count number of correct answers
+                if ($(this).val() == 2) {
+                    correctAnswers++;
+
+                }
             }
-        })
+            console.log("Total: " + totalQuestions);
+            console.log("Correct: " + correctAnswers);
+        });
 
-        alert("You had " + counter + " correct answers! You'll now be redirected back to the main menu.")
-        window.location.href="userHome.html";
+        let result = correctAnswers / totalQuestions * 100;
 
-//        str = document.forms[0].elements[0];
-//        var strObj = $(str);
-//        alert(strObj.val());
-//        for (var i=0, j=0, k=1; i<100; i++) {
-//            var radios = $("input[type='radio']");
-//            radios.filter(":checked");
-
-//            var x = getRadioVal(i,j);
-//            var y = getRadioVal(i,k);
-
-//            if (a == 2 || b == 2) {
-//                counter++;
- //           }
-  //      }
-        // dette loop virker kun for 100 spg. per quiz.
-
+        alert("You were right " + result + "% of the time. You had " + correctAnswers + " correct answer(s) out of " + totalQuestions + " possible.");
 
     });
 
