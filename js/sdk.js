@@ -141,7 +141,22 @@ const SDK = {
 
                 cb(null, data);
             });
-        }
+        },
+
+        deleteQuiz: (id, cb) => {
+            SDK.request({
+                method: "DELETE",
+                url: "/quiz/" + id,
+            },  (err) => {
+                if (err) {
+                    return cb(err);
+                }
+
+                // Her ryger den i if-statementet, men sletter korret?
+
+                cb(null);
+            });
+        },
     },
 
     Question: {

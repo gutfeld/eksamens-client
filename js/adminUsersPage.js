@@ -45,7 +45,7 @@ $(document).ready(() => {
                                     <td>${user.username}</td>
                                     <td>${user.type}</td>
                                     <td>${user.userId}</td>
-                                    <td> <button class="btn-danger" onclick="deleteUser(${user.id})">Delete user</button> </td>
+                                    <td> <button class="btn-danger" onclick="deleteUser(${user.userId})">Delete user</button> </td>
                               <tr/>
             `);
 
