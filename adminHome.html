@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta charset="UTF-8">
+    <title>Daniel Gutfeld</title>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="container">
+
+            <nav class="navbar navbar-inverse">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="adminHome.html">Home</a></li>
+                        <li><p class="navbar-text" id="currentUser"></p></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="deleteUserNavButton"><span class="glyphicon glyphicon-trash"></span> Delete User</a></li>
+                        <li><a id="logoutNavButton"><span class="glyphicon glyphicon glyphicon-chevron-right"></span> Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <hr>
+            <h1>Admin Homepage</h1>
+            <h4>You have two options from here:</h4>
+            <hr><hr><hr>
+
+            <button class="btn-success" id="adminQuizzesPageButton">See Quizzes, create new and delete</button>
+            <hr>
+            <button class="btn-success" id="adminUsersPageButton">See Users, create new and delete</button>
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">ADMINISTRATOR-PAGE | 2017 © All rights reserved - Gutfeld Inc.</p>
+    </div>
+</footer>
+
+<script src="lib/js/jquery-3.2.1.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/adminHome.js"></script>
+
+</body>
+</html>

@@ -53,13 +53,25 @@ const SDK = {
             });
         },
 
+        LogOut: () => {
+            SDK.Storage.remove("userId");
+            SDK.Storage.remove("firstName");
+            SDK.Storage.remove("lastName");
+            SDK.Storage.remove("username");
+            SDK.Storage.remove("password");
+            SDK.Storage.remove("type");
+            SDK.Storage.remove("chosenCourseId");
+            SDK.Storage.remove("chosenQuizId");
+            window.location.href ="index.html";
+        }
+
 
     },
 
     Storage: {
-        predefined: "FML Quiz",
+        predefined: "FML.",
         set: (key, value) => {
-            window.localStorage.setItem(SDK.Storage.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
+            window.localStorage.setItem(SDK.Storage.predefined + key, (typeof value === 'object') ? JSON.stringify(value) : value)
         },
         load: (key) => {
             const val = window.localStorage.getItem(SDK.Storage.predefined + key);
@@ -90,8 +102,70 @@ const SDK = {
 
             });
 
-        }
-    }
+        },
 
+        deleteUser: (id, cb) => {
+            SDK.request({
+                method: "DELETE",
+                url: "/user/" + id,
+            },  (err) => {
+                if (err) {
+                    return cb(err);
+                }
+
+                // Her ryger den i if-statementet, men sletter korret?
+
+                cb(null);
+            });
+        },
+
+        findUsers: (cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/user",
+            },  (err, data) => {
+                if (err) return cb(err);
+                cb(null, data);
+            });
+
+        }
+    },
+
+    Quiz: {
+        findQuizzes: (cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/quiz/" + SDK.Storage.load('chosenCourseId'),
+            }, (err, data) => {
+                if (err) return cb(err);
+
+                cb(null, data);
+            });
+        }
+    },
+
+    Question: {
+        findQuestions: (cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/question/" + SDK.Storage.load('chosenQuizId'),
+            },  (err, data) => {
+                if (err) return cb(err);
+                cb(null, data);
+            });
+        }
+    },
+
+    Choice: {
+        findChoices: (id, cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/choice/" + id,
+            },  (err, data) => {
+                if (err) return cb(err);
+                cb(null, data);
+            });
+        }
+    },
 
 }

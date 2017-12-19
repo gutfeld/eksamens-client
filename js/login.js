@@ -2,8 +2,8 @@ $(document).ready(() => {
 
     $("#loginButton").click(() => {
 
-        const userName = $("#inputUsername").val();
-        const password = $("#inputPassword").val();
+        let userName = $("#inputUsername").val();
+        let password = $("#inputPassword").val();
 
         SDK.Login.authLogin(userName, password, (err, data) => {
             if (err && err.xhr.status === 401) {
@@ -13,7 +13,11 @@ $(document).ready(() => {
                 console.log("Error")
                 alert("Incorrect information, try again!")
             } else {
-                window.location.href = "userHome.html";
+                if (SDK.Storage.load("type") == 2) {
+                    window.location.href ="adminHome.html";
+                } else {
+                    window.location.href = "userHome.html";
+                }
             }
         });
 

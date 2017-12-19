@@ -1,12 +1,16 @@
 $(document).ready(() => {
 
-    $("#submitNewUserButton").click(() => {
+    $("#submitNewUserButtonAdmin").click(() => {
 
-        let firstName = $("#inputCreateFirstName").val();
-        let lastName = $("#inputCreateLastName").val();
-        let username = $("#inputCreateUsername").val();
-        let password = $("#inputCreatePassword").val();
+        let firstName = $("#inputCreateFirstNameAdmin").val();
+        let lastName = $("#inputCreateLastNameAdmin").val();
+        let username = $("#inputCreateUsernameAdmin").val();
+        let password = $("#inputCreatePasswordAdmin").val();
         let type = 1;
+
+        if(document.getElementById("adminAdminUser").checked) {
+            type = 2;
+        }
 
         SDK.User.createUser(firstName, lastName, username, password, type, (err, data) => {
             if (err && err.xhr.status === 401) {
@@ -16,6 +20,7 @@ $(document).ready(() => {
                 console.log("Error")
                 alert("User wasn't created correctly")
             } else {
+                // Lav den om til admin startside
                 window.location.href = "index.html";
             }
         });
