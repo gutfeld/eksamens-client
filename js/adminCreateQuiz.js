@@ -62,9 +62,6 @@ $(document).ready(() => {
                 console.log("Error")
                 alert("Quiz wasn't created correctly")
             } else {
-
-                alert("Quiz was created with the following ID: " + quizData.quizId);
-                
                 SDK.Question.createQuestion(questionTitle, quizData.quizId, (err, questionData) => {
                     questionData = JSON.parse(questionData);
 
@@ -75,8 +72,6 @@ $(document).ready(() => {
                         console.log("Error")
                         alert("Question wasn't created correctly")
                     } else {
-                        alert("Quiz was created with the following ID: " + questionData.questionId)
-
                         if(document.getElementById("adminChoiceFirst").checked) {
                             answerChoiceONE = 2;
                         } else if(document.getElementById("adminChoiceSecond").checked) {
@@ -93,8 +88,6 @@ $(document).ready(() => {
                                 console.log("Error")
                                 alert("Choice 1 wasn't created correctly")
                             } else {
-                                alert("Choice 1 was created with the following ID: " + choiceDataONE.choiceId);
-
                                 // creating choice 2
                                 SDK.Choice.createChoice(choiceTWO, answerChoiceTWO, questionData.questionId, (err, choiceDataTWO) => {
                                     choiceDataTWO = JSON.parse(choiceDataTWO)
@@ -105,7 +98,6 @@ $(document).ready(() => {
                                         console.log("Error")
                                         alert("Choice 2 wasn't created correctly")
                                     } else {
-                                        alert("Choice 2 was created with the following ID: " + choiceDataTWO.choiceId);
                                         alert("The quiz was crated succesfully.")
                                     }
                                 });
