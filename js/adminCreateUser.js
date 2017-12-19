@@ -20,8 +20,8 @@ $(document).ready(() => {
                 console.log("Error")
                 alert("User wasn't created correctly")
             } else {
-                // Lav den om til admin startside
-                window.location.href = "index.html";
+                alert("Succes! You will now be redirected to the homepage.")
+                window.location.href = "adminHome.html";
             }
         });
 

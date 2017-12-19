@@ -1,10 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Daniel Gutfeld</title>
+
 </head>
 <body>
+
+<div class="container">
+    <div class="jumbotron">
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="adminHome.html">Home</a></li>
+                    <li><p class="navbar-text" id="currentUser"></p></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="deleteUserNavButton"><span class="glyphicon glyphicon-trash"></span> Delete User</a></li>
+                    <li><a id="logoutNavButton"><span class="glyphicon glyphicon glyphicon-chevron-right"></span> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+
+        <h1>Create a new quiz!</h1>
+        <hr>
+
+        <div class="form-group">
+            <label class="control-label">Which course?</label>
+            <br>
+            <label class="radio-inline"><input type="radio" name="quizCourseOption" id="adminCourseDIS"> Distribuerede Systemer  </label>
+            <label class="radio-inline"><input type="radio" name="quizCourseOption" id="adminCourseITF"> IT-Forandringsledelse  </label>
+            <label class="radio-inline"><input type="radio" name="quizCourseOption" id="adminCourseMAKRO"> Makroøkonomi  </label>
+            <label class="radio-inline"><input type="radio" name="quizCourseOption" id="adminCourseFIN"> Finansiering  </label>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="inputCreateQuizTitleAdmin">Quiz Title</label>
+            <input type="text" class="form-control" id="inputCreateQuizTitleAdmin" placeholder="Quiz Title">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputCreateQuestionTitleAdmin">Question Title</label>
+            <input type="text" class="form-control" id="inputCreateQuestionTitleAdmin" placeholder="Question Title">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputCreateFirstChoice">First Choice</label>
+            <input type="text" class="form-control" id="inputCreateFirstChoice" placeholder="First Choice">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="inputCreateSecondChoice">Second Choice</label>
+            <input type="text" class="form-control" id="inputCreateSecondChoice" placeholder="Second Choice">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Which choice is correct?</label>
+            <br>
+            <label class="radio-inline"><input type="radio" name="quizChoiceOption" id="adminChoiceFirst"> First choice is correct  </label>
+            <label class="radio-inline"><input type="radio" name="quizChoiceOption" id="adminChoiceSecond"> Second choice is correct</label>
+        </div>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-success" id="submitNewQuizButtonAdmin">Submit new quiz</button>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">ADMINISTRATOR-PAGE | 2017 © All rights reserved - Gutfeld Inc.</p>
+    </div>
+</footer>
+
+<script src="lib/js/jquery-3.2.1.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/adminCreateQuiz.js"></script>
 
 </body>
 </html>

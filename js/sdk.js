@@ -157,6 +157,21 @@ const SDK = {
                 cb(null);
             });
         },
+
+        createQuiz: (quizTitle,courseId, cb) => {
+            SDK.request({
+                method: "POST",
+                url: "/quiz",
+                data: {quizTitle:quizTitle,courseId:courseId},
+            }, (err, data) => {
+                //On login-error
+                if (err) return cb(err);
+
+                cb(null, data);
+
+            });
+
+        },
     },
 
     Question: {
@@ -168,7 +183,22 @@ const SDK = {
                 if (err) return cb(err);
                 cb(null, data);
             });
-        }
+        },
+
+        createQuestion: (questionTitle, quizId, cb) => {
+            SDK.request({
+                method: "POST",
+                url: "/question",
+                data: {questionTitle:questionTitle, quizId:quizId},
+            }, (err, data) => {
+                //On login-error
+                if (err) return cb(err);
+
+                cb(null, data);
+
+            });
+
+        },
     },
 
     Choice: {
@@ -180,7 +210,22 @@ const SDK = {
                 if (err) return cb(err);
                 cb(null, data);
             });
-        }
+        },
+
+        createChoice: (choiceTitle, answer, questionId, cb) => {
+            SDK.request({
+                method: "POST",
+                url: "/choice",
+                data: {choiceTitle:choiceTitle, answer:answer, questionId:questionId},
+            }, (err, data) => {
+                //On login-error
+                if (err) return cb(err);
+
+                cb(null, data);
+
+            });
+
+        },
     },
 
 }
